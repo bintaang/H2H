@@ -1,0 +1,391 @@
+/* ============================================================
+   GLOBAL RESET
+============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================================
+   BASE STYLE
+============================================================ */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to bottom, #fff0f5, #ffe4ec);
+    color: #5c3d4c;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   HOMEPAGE LAYOUT
+============================================================ */
+.homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+    overflow-x: hidden;
+}
+
+.lottie {
+    width: 300px;
+    height: 200px;
+}
+
+.header {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.header__title {
+    font-size: 2.5rem;
+    color: #ff69b4;
+    margin-bottom: 0.5rem;
+}
+
+.header__subtitle {
+    font-size: 1.1rem;
+    color: #8a5c68;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 3rem 0;
+    width: 100%;
+}
+
+.menu__button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    width: 90%;
+    max-width: 300px;
+    background-color: #ffb6c1;
+    color: #692354;
+    font-size: 1.1rem;
+    border-radius: 15px;
+    box-shadow: 0 0 12px rgba(255, 182, 193, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    border: 2px solid #fcd2df;
+    animation: softGlow 3s ease-in-out infinite;
+}
+
+.menu__button:hover {
+    background-color: #ffaecb;
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(255, 182, 193, 0.5);
+}
+
+.menu__button--playlist {
+    background-color: #ffc0cb;
+}
+.menu__button--gif {
+    background-color: #ffccde;
+}
+.menu__button--gift {
+    background-color: #fddde6;
+}
+.menu__button--mood {
+    background-color: #cfa9e8;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #a17584;
+    height: max-content;
+}
+
+.footer__text {
+    font-style: italic;
+    font-weight: 500;
+}
+
+@keyframes softGlow {
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 182, 193, 0.6);
+    }
+}
+
+/* ============================================================
+   GIF PAGE
+============================================================ */
+.gif-page {
+    text-align: center;
+    padding: 2rem 1rem;
+    background-color: #fff2eb;
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.back-home-button {
+    background-color: #e57290;
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    border-radius: 120px;
+    padding: 10px;
+    top: 20px;
+    left: 20px;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-home-button:hover {
+    text-decoration: underline;
+}
+
+.header__title {
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.header__subtitle {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+.gif-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.gif-generator__image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gif-generator__text {
+    font-size: 1.4rem;
+    color: #444;
+    padding: 0 1rem;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.gif-generator__button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+    background-color: #ff88a3;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+        background-color 0.3s,
+        transform 0.1s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+}
+
+.gif-generator__button:hover {
+    background-color: #e57290;
+    transform: scale(1.02);
+}
+
+/* ============================================================
+   PLAYLIST PAGE
+============================================================ */
+.backhome {
+    height: 40px;
+    display: flex;
+}
+
+.back-home-button-playlist {
+    display: flex;
+    background-color: #e57290;
+    margin-left: 20px;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 40px;
+    color: white;
+    gap: 10px;
+}
+
+.playlist-page {
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: hidden;
+}
+
+.playlist__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    overflow-x: hidden;
+}
+
+.playlist__card {
+    overflow-x: hidden;
+    justify-items: center;
+}
+
+#playlist {
+    width: max-content;
+    height: 300px;
+    overflow-x: hidden;
+}
+
+.header-playlist {
+    justify-items: center;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+/* ============================================================
+   GIFT PAGE
+============================================================ */
+.gift-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
+    overflow-x: hidden;
+    background-color: #fff0f5; /* Tambahkan agar terlihat penuh */
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 18px;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 600;
+    background-color: #ffe4f6;
+    padding: 25px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 40px;
+    max-width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+.footer-gift {
+    margin: 20px 0;
+    background-color: #e57290;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    width: max-content;
+    max-width: 90%;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.btn-gift {
+    text-decoration: none;
+    color: #fddde6;
+}
+.header-gift {
+    font-size: 40px;
+    width: 100%;
+}
+.header-subtitle {
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+#GIF {
+    width: 400px;
+    height: max-content;
+}
+.love-letter {
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.disk {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    justify-items: center;
+    justify-self: center;
+    align-items: center;
+}
+.container-disk {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe4f6;
+}
+
+/* ============================================================
+   RESPONSIVE SETTINGS (Mobile First + iPhone 12 and up)
+============================================================ */
+@media (min-width: 390px) {
+    .header__title {
+        font-size: 2.7rem;
+    }
+    .menu__button {
+        font-size: 1.2rem;
+    }
+    .gif-generator__text {
+        font-size: 1.3rem;
+    }
+    .gif-generator__button {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .header__title {
+        font-size: 3rem;
+    }
+    .menu {
+        flex-direction: row;
+        justify-content: center;
+    }
+    .menu__button {
+        font-size: 1.2rem;
+    }
+    .gif-generator__text {
+        font-size: 1.5rem;
+    }
+    .gif-generator__button {
+        font-size: 1.15rem;
+    }
+    .header__subtitle {
+        font-size: 1.1rem;
+    }
+}
