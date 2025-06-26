@@ -274,7 +274,7 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 10px;
+    padding: 15px;
     overflow-x: hidden;
     background-color: #fff0f5; /* Tambahkan agar terlihat penuh */
 }
@@ -285,7 +285,7 @@ body {
     gap: 20px;
     font-size: 18px;
     font-family: "Times New Roman", Times, serif;
-    font-weight: 600;
+    font-weight: 500;
     background-color: #ffe4f6;
     padding: 25px;
     border-radius: 10px;
@@ -294,6 +294,12 @@ body {
     line-height: 40px;
     max-width: 100%;
     align-items: center;
+    justify-items: center;
+}
+.footer-text {
+    font-style: italic;
+    opacity: 40%;
+    justify-content: center;
     justify-items: center;
 }
 
@@ -387,5 +393,184 @@ body {
     }
     .header__subtitle {
         font-size: 1.1rem;
+    }
+}
+
+/* TAMAGHOCI */
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #fff0f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+}
+
+.pet-display img {
+    width: 120px;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.actions button {
+    background-color: #ff69b4;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin: 0.3rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.actions button:hover {
+    background-color: #ff85c1;
+}
+/*
+Tamaghoci-Page */
+
+/* Custom CSS for Tamagotchi Retro Theme */
+
+/* Define the retro color palette using CSS variables */
+:root {
+    --color-background: #ffc0cb; /* Light Pink */
+    --color-container-bg: #dda0dd; /* Plum / Medium Purple */
+    --color-screen-border: #ba55d3; /* Medium Orchid / Darker Purple */
+    --color-screen-bg: #ba55d3; /* Darker Purple for screen */
+    --color-text-primary: #330033; /* Very Dark Purple */
+    --color-text-secondary: #6a0dad; /* Darker Violet */
+    --color-progress-bg: #8a2be2; /* Blue Violet */
+    --color-progress-fill: #ff69b4; /* Hot Pink */
+    --color-button-bg: #ee82ee; /* Violet */
+    --color-button-active: #da70d6; /* Orchid */
+    --color-button-shadow: #7b2f8f; /* Dark Magenta */
+    --color-message-box: #ffdab9; /* Peach Puff */
+}
+
+/* Base body styling using Tailwind utilities and custom variables */
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: "Inter", sans-serif; /* Default readable font */
+    padding-bottom: 2rem; /* Add some padding at the bottom for scrolling on small devices */
+    overflow-y: auto; /* Allow scrolling */
+}
+
+/* Custom font class for pixelated retro text */
+.font-pixel {
+    font-family: "VT323", monospace;
+}
+
+/* Tamagotchi Container - The outer shell of the device */
+.tamagotchi-container {
+    background-color: var(--color-container-bg);
+    border: 5px solid var(--color-screen-border);
+    box-shadow: 10px 10px 0px var(--color-button-shadow); /* More pronounced shadow */
+}
+
+/* Screen Border - Frame around the display */
+.screen-border {
+    background-color: var(--color-screen-border);
+    border: 5px solid var(--color-text-primary);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.4); /* Inner shadow for depth */
+}
+
+/* Tamagotchi Screen - The display area */
+.tamagotchi-screen {
+    background-color: var(--color-screen-bg);
+    border: 3px dashed var(--color-text-secondary); /* Dashed border for retro feel */
+    box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 0.3); /* Inner shadow for screen depth */
+}
+
+/* Progress Bar Background */
+.progress-bar-bg {
+    background-color: var(--color-progress-bg);
+    border: 2px solid var(--color-text-primary);
+}
+
+/* Progress Bar Fill */
+.progress-bar-fill {
+    background-color: var(--color-progress-fill);
+    /* Animation for smooth transitions when filling */
+    transition: width 0.5s ease-out;
+}
+
+/* Action Buttons */
+.action-button {
+    background-color: var(--color-button-bg);
+    color: var(--color-text-primary);
+    border: 3px solid var(--color-text-primary);
+    border-radius: 0.75rem; /* Rounded corners */
+    padding: 0.75rem; /* Padding inside buttons */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.1s ease-out; /* Smooth transition for hover/active states */
+    box-shadow: 4px 4px 0px var(--color-button-shadow); /* 3D effect for buttons */
+}
+
+.action-button:hover {
+    transform: translateY(-2px); /* Lift button slightly on hover */
+    box-shadow: 6px 6px 0px var(--color-button-shadow);
+}
+
+.action-button:active {
+    transform: translateY(2px); /* Push button down on click */
+    box-shadow: 2px 2px 0px var(--color-button-shadow);
+    background-color: var(--color-button-active); /* Change color when active */
+}
+
+/* Message Box */
+.message-box {
+    background-color: var(--color-message-box);
+    color: var(--color-text-primary);
+    border: 3px solid var(--color-text-secondary);
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for smaller screens (e.g., mobile) */
+@media (max-width: 640px) {
+    .tamagotchi-container {
+        padding: 1rem;
+    }
+    .screen-border {
+        padding: 0.75rem;
+    }
+    .tamagotchi-screen {
+        height: 180px; /* Adjust screen height */
+    }
+    .status-bars .text-lg {
+        font-size: 0.9rem; /* Smaller font for status */
+    }
+    .progress-bar-bg {
+        height: 16px;
+    }
+    .action-button {
+        padding: 0.5rem;
+    }
+    .action-button span.text-3xl {
+        font-size: 2rem; /* Smaller icon size */
+    }
+    .action-button span.text-base {
+        font-size: 0.875rem; /* Smaller button text */
+    }
+    .message-box {
+        font-size: 0.9rem;
+        padding: 0.75rem;
     }
 }

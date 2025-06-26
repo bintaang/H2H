@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tiny Tamagotchi</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body class="body-tamagochi">
+        <div class="container">
+            <h1>Tiny Tamagotchi</h1>
+            <p>Name: <span id="pet-name"></span></p>
+            <p>Mood: <span id="pet-mood">Happy</span></p>
+            <p>Hunger: <span id="pet-hunger">0</span></p>
+
+            <div class="pet-display">
+                <img id="pet-image" src="happy.png" alt="Pet" />
+            </div>
+
+            <div class="actions">
+                <button onclick="feedPet()">🍎 Feed</button>
+                <button onclick="playWithPet()">🎈 Play</button>
+                <button onclick="resetPet()">🔄 Reset</button>
+            </div>
+        </div>
+
+        <audio id="feed-sound" src="feed.mp3"></audio>
+        <audio id="play-sound" src="play.mp3"></audio>
+        <script src="script.js"></script>
+    </body>
+</html>

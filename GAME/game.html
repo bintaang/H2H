@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Whack-a-Hole Retro</title>
+        <!-- Memuat font pixel art dari Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Memuat file CSS eksternal untuk styling -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="game-container">
+            <!-- Layar utama/menu awal -->
+            <div id="start-screen" class="game-screen active">
+                <h1>WHACK-A-HOLE RETRO</h1>
+                <button id="start-button" class="pixel-button">
+                    Mulai Game
+                </button>
+                <a href="../index.html" class="pixel-button purple"
+                    >Kembali ke Menu Utama</a
+                >
+            </div>
+
+            <!-- Layar permainan utama -->
+            <div id="game-screen" class="game-screen hidden">
+                <div class="header">
+                    <div class="score-board">
+                        <p>SKOR: <span id="score">0</span></p>
+                        <p>MELSET: <span id="misses">0</span></p>
+                    </div>
+                    <button id="exit-game-button" class="pixel-button small">
+                        Keluar Game
+                    </button>
+                </div>
+
+                <!-- Area permainan dengan lubang-lubang -->
+                <div class="game-area" id="game-area">
+                    <!-- Hole elements will be dynamically created by JavaScript for flexibility -->
+                    <!-- Example of a single hole structure: -->
+                    <!-- <div class="hole">
+                    <img src="GAME/mice.png" alt="Tikus" class="mice hidden">
+                </div> -->
+                </div>
+            </div>
+
+            <!-- Pop-up Kemenangan -->
+            <div id="win-popup" class="game-popup hidden">
+                <div class="popup-content">
+                    <h2 class="popup-title">SELAMAT! ANDA BERHASIL!</h2>
+                    <p id="win-message" class="popup-message">
+                        Pesan kemenangan akan muncul di sini.
+                    </p>
+                    <button id="close-win-popup" class="pixel-button">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pop-up Kekalahan -->
+            <div id="lose-popup" class="game-popup hidden">
+                <div class="popup-content">
+                    <h2 class="popup-title">GAME OVER!</h2>
+                    <p class="popup-message">
+                        Anda gagal memukul tikus 5 kali.
+                    </p>
+                    <button id="restart-game-button" class="pixel-button">
+                        Coba Lagi
+                    </button>
+                    <button id="back-to-menu-button" class="pixel-button small">
+                        Kembali ke Menu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pop-up Konfirmasi Keluar Game -->
+            <div id="exit-confirm-popup" class="game-popup hidden">
+                <div class="popup-content">
+                    <h2 class="popup-title">YAKIN INGIN KELUAR?</h2>
+                    <p class="popup-message">Progress game Anda akan hilang.</p>
+                    <div class="button-group">
+                        <button id="confirm-exit-yes" class="pixel-button">
+                            Ya, Keluar
+                        </button>
+                        <button id="confirm-exit-no" class="pixel-button small">
+                            Tidak, Lanjutkan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memuat file JavaScript eksternal untuk logika permainan -->
+        <script src="script.js"></script>
+    </body>
+</html>

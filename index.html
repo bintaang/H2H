@@ -1,60 +1,71 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For My Love</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+    <head>
+        <meta charset="UTF-8" />
 
-</head>
-<body class="homepage">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- HEADER SECTION -->
-  <header class="header">
-    <!-- GIF HEADER-->
-    <div id="lottie-container" class="lottie"></div>
+        <title>For My Love</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
-    <script>
-      var animation = lottie.loadAnimation({
-        container: document.getElementById('lottie-container'), // ✅ Correct container
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: 'GIFS/Negative-mask-effect.json' // ✅ Correct path (quoted)
-      });
-    </script>
-  </header>
+        <link rel="stylesheet" href="style.css" />
 
-  <!-- MAIN MENU BUTTONS -->
-  <main class="menu">
-    <!-- Button to open Playlist page -->
-    <a href="playlist.html" class="menu__button menu__button--playlist">
-      🎶 Music for You
-    </a>
-    
-    <!-- Button to open GIF Generator page -->
-    <a href="gif.html" class="menu__button menu__button--gif">
-      🎞 Random Warm GIF
-    </a>
-    
-    <!-- Button to open Gift page (letter, memories, etc) -->
-    <a href="gift.html" class="menu__button menu__button--gift">
-      🎁 Your Little Gift
-    </a>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+    </head>
 
-    <!-- Button to open MOOD-0-METTER page  -->
-    <a href="mood.html" class="menu__button menu__button--mood">
-      📑 Tell me your story 📑
-    </a>
+    <body class="homepage">
+        <!-- HEADER SECTION -->
 
-  </main>
+        <header class="header">
+            <!-- GIF HEADER-->
 
-  <!-- FOOTER MESSAGE -->
-  <footer class="footer">
-    <p class="footer__text">This place is yours, anytime you need it 🌙</p>
-  </footer>
+            <div id="lottie-container" class="lottie"></div>
 
-</body>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.0/lottie.min.js"></script>
+
+            <script>
+                var animation = lottie.loadAnimation({
+                    container: document.getElementById("lottie-container"), // ✅ Correct container
+                    renderer: "svg",
+                    loop: true,
+                    autoplay: true,
+                    path: "GIFS/Negative-mask-effect.json", // ✅ Correct path (quoted)
+                });
+            </script>
+        </header>
+
+        <!-- MAIN MENU BUTTONS -->
+
+        <main class="menu">
+            <!-- Button to open Playlist page -->
+
+            <a href="playlist.html" class="menu__button menu__button--playlist">
+                🎶 Music for You
+            </a>
+
+            <!-- Button to open GIF Generator page -->
+
+            <a href="gif.html" class="menu__button menu__button--gif">
+                🎞 Random Warm GIF
+            </a>
+
+            <!-- Button to open Gift page (letter, memories, etc) -->
+
+            <a href="gift.html" class="menu__button menu__button--gift">
+                🎁 Your Little Gift
+            </a>
+
+            <!-- Button to open Whack-a-Hole game page -->
+            <a href="GAME/game.html" class="menu__button menu__button--game">
+                🎮 Whack-a-Hole Game
+            </a>
+        </main>
+
+        <!-- FOOTER MESSAGE -->
+
+        <footer class="footer">
+            <p class="footer__text">
+                This place is yours, anytime you need it 🌙    
+            </p>
+        </footer>
+    </body>
 </html>

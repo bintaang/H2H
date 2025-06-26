@@ -1,0 +1,383 @@
+/*
+    Dokumentasi CSS: Gaya retro pixel art bernuansa pink untuk game Whack-a-Hole.
+    Anda bisa memodifikasi variabel warna, ukuran, dan properti lainnya di sini.
+*/
+
+/* --- Variabel Warna Global --- */
+:root {
+    --pink-light: #ffc0cb; /* Merah muda terang */
+    --pink-medium: #ff69b4; /* Merah muda sedang (hot pink) */
+    --pink-dark: #c71585; /* Merah muda gelap (deep pink) */
+    --pink-accent: #ff1493; /* Merah muda aksen (deep pink lebih cerah) */
+    --background-color: #ffe0f0; /* Latar belakang sangat muda pink */
+    --text-color: #4b0082; /* Ungu gelap untuk teks */
+    --border-color: #8a2be2; /* Biru keunguan untuk batas */
+    --shadow-color: #6a0dad; /* Ungu lebih gelap untuk bayangan */
+}
+
+/* --- Pengaturan Dasar Body --- */
+body {
+    font-family: "Press Start 2P", cursive; /* Font gaya pixel art */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Mencegah scroll */
+    text-align: center;
+    font-size: 16px; /* Ukuran font default */
+    padding: 20px; /* Padding untuk responsif */
+    box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+}
+
+/* --- Kontainer Game --- */
+.game-container {
+    background-color: var(--pink-light);
+    border: 8px solid var(--border-color); /* Border tebal gaya retro */
+    box-shadow: 12px 12px 0px var(--shadow-color); /* Bayangan tebal pixel art */
+    border-radius: 12px; /* Sudut sedikit membulat */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px; /* Lebar maksimum game */
+    min-height: 500px; /* Tinggi minimum */
+    box-sizing: border-box;
+    position: relative; /* Untuk pop-up */
+}
+
+/* --- Layar Game (Start, Main, etc.) --- */
+.game-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: absolute; /* Untuk transisi antar layar */
+    top: 0;
+    left: 0;
+    padding: 20px;
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none; /* Nonaktifkan interaksi saat tersembunyi */
+}
+
+.game-screen.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all; /* Aktifkan interaksi saat aktif */
+    position: relative; /* Aktifkan posisi relatif untuk layar aktif */
+}
+
+.game-screen.hidden {
+    display: none; /* Sembunyikan sepenuhnya saat tidak aktif */
+}
+
+/* --- Header (Skor dan Tombol Keluar) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    border-bottom: 4px solid var(--border-color);
+}
+
+.score-board p {
+    margin: 5px 0;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 0px var(--shadow-color); /* Efek teks pixelated */
+}
+
+/* --- Area Permainan (Grid Lubang) --- */
+.game-area {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolom lubang */
+    gap: 15px; /* Jarak antar lubang */
+    width: 100%;
+    max-width: 600px; /* Ukuran maksimum area lubang */
+    max-height: 80vh; /* Add a max-height relative to viewport height */
+    aspect-ratio: 1 / 1; /* Maintain aspect ratio for square grid */
+    flex-grow: 1; /* Memenuhi sisa tinggi */
+    padding: 15px;
+    background-color: var(--pink-medium);
+    border: 6px solid var(--border-color);
+    box-shadow: inset 4px 4px 0px var(--shadow-color); /* Efek cekung */
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: auto; /* Center the game area if it doesn't take full width */
+}
+
+/* --- Gaya Lubang --- */
+.hole {
+    background-color: var(--pink-dark);
+    border: 4px solid var(--border-color);
+    border-radius: 50%; /* Bentuk lingkaran untuk lubang */
+    width: 100%;
+    padding-bottom: 100%; /* Membuat lubang persegi (aspek rasio 1:1) */
+    position: relative;
+    overflow: hidden; /* Penting untuk animasi tikus */
+    cursor:
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="%23FF1493" d="M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83zM3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z"/></svg>'),
+        pointer; /* Custom cursor hammer */
+    box-shadow:
+        inset 2px 2px 0px var(--shadow-color),
+        4px 4px 0px var(--shadow-dark); /* Bayangan lubang */
+}
+
+.hole:active {
+    transform: translateY(2px); /* Efek tekan */
+    box-shadow: inset 2px 2px 0px var(--shadow-color);
+}
+
+/* --- Gaya Tikus --- */
+.mice {
+    position: absolute;
+    left: 50%;
+    transform: translate(
+        -50%,
+        100%
+    ); /* Tikus dimulai di bawah lubang (100% dari tingginya sendiri) */
+    width: 90%; /* Ukuran gambar tikus relatif terhadap lubang */
+    max-width: 100px; /* Batasan ukuran tikus */
+    height: auto;
+    /* Durasi transisi diperpanjang sedikit untuk kehalusan */
+    transition:
+        transform 0.3s ease-out,
+        opacity 0.3s ease-out; /* Animasi transform dan opacity */
+    visibility: hidden; /* Sembunyikan elemen tanpa menghilangkan ruang */
+    opacity: 0; /* Membuat transparan */
+    pointer-events: none; /* Tikus tidak bisa diklik saat tersembunyi */
+    image-rendering: pixelated; /* Penting untuk gambar pixel art */
+}
+
+/* Ketika class 'up' ditambahkan ke hole, tikus di dalamnya akan muncul */
+.hole.up .mice {
+    transform: translate(
+        -50%,
+        0
+    ); /* Tikus muncul di atas lubang (0% dari tingginya sendiri) */
+    visibility: visible; /* Membuat elemen terlihat */
+    opacity: 1; /* Membuat buram */
+    pointer-events: all; /* Tikus bisa diklik saat muncul */
+}
+
+/* --- Gaya Tombol --- */
+.pixel-button {
+    font-family: "Press Start 2P", cursive;
+    background-color: var(--pink-accent);
+    color: white;
+    border: 4px solid var(--border-color);
+    padding: 12px 24px;
+    margin: 10px;
+    cursor: pointer;
+    text-shadow: 2px 2px 0px var(--shadow-color);
+    box-shadow: 6px 6px 0px var(--shadow-color);
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: all 0.1s ease-out;
+}
+
+.pixel-button:hover {
+    background-color: var(--pink-dark);
+    box-shadow: 4px 4px 0px var(--shadow-color);
+    transform: translate(2px, 2px); /* Sedikit bergerak saat hover */
+}
+
+.pixel-button:active {
+    background-color: var(--border-color);
+    box-shadow: 2px 2px 0px var(--shadow-color);
+    transform: translate(4px, 4px); /* Efek tekan */
+}
+
+.pixel-button.small {
+    font-size: 0.9em;
+    padding: 8px 16px;
+    margin: 5px;
+}
+
+/* --- Pop-up Global --- */
+.game-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Overlay gelap */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Pastikan di atas elemen lain */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.game-popup.hidden {
+    display: none; /* Sembunyikan saat tidak aktif */
+}
+
+.game-popup:not(.hidden) {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-content {
+    background-color: var(--pink-light);
+    border: 8px solid var(--border-color);
+    box-shadow: 10px 10px 0px var(--shadow-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    max-width: 90%;
+    width: 500px;
+    box-sizing: border-box;
+    transform: scale(0.9);
+    transition: transform 0.3s ease-in-out;
+}
+
+.game-popup:not(.hidden) .popup-content {
+    transform: scale(1);
+}
+
+.popup-title {
+    font-size: 1.8em;
+    color: var(--pink-dark);
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0px var(--shadow-color);
+}
+
+.popup-message {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.credit-text {
+    font-size: 0.8em;
+    color: var(--text-color);
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* --- Responsif untuk layar kecil --- */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .game-container {
+        border-width: 6px;
+        box-shadow: 8px 8px 0px var(--shadow-color);
+        padding: 15px;
+        max-height: 95vh; /* Batasi tinggi container agar tidak melar */
+        width: 95%; /* Batasi lebar container */
+    }
+
+    .game-screen {
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        border-bottom: 2px solid var(--border-color);
+        margin-bottom: 15px;
+    }
+
+    .score-board p {
+        font-size: 1em;
+    }
+
+    .game-area {
+        grid-template-columns: repeat(
+            3,
+            1fr
+        ); /* Mengubah menjadi 3 kolom di layar kecil */
+        gap: 10px;
+        padding: 10px;
+        max-width: 400px; /* Batasi lebar area game */
+        max-height: none; /* Hapus batasan tinggi eksplisit di mobile untuk fleksibilitas */
+    }
+
+    /* --- Penyesuaian ukuran tikus di layar kecil --- */
+    .mice {
+        max-width: 80px; /* Mengurangi batas lebar maksimum tikus di mobile */
+    }
+
+    .pixel-button {
+        padding: 10px 20px;
+        font-size: 0.9em;
+        box-shadow: 4px 4px 0px var(--shadow-color);
+    }
+
+    .pixel-button.small {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+
+    .popup-content {
+        padding: 20px;
+        border-width: 6px;
+        box-shadow: 8px 8px 0px var(--shadow-color);
+    }
+
+    .popup-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+
+    .popup-message {
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+.pixel-button {
+    font-family: "Press Start 2P", cursive;
+    background-color: #ff1493;
+    color: white;
+    border: 3px solid #9400d3;
+    padding: 10px 15px;
+    text-align: center;
+    display: inline-block;
+    font-size: 10px;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 #9400d3;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.pixel-button:hover {
+    transform: translateY(2px);
+    box-shadow: 2px 2px 0 #9400d3;
+}
+
+.pixel-button.purple {
+    background-color: #8000ff;
+    color: white;
+    border-color: #4b0082;
+    box-shadow: 4px 4px 0 #4b0082;
+}
